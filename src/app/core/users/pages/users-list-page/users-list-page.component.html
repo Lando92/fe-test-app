@@ -1,0 +1,72 @@
+<div class="users-container">
+  <div class="header">
+    <button mat-flat-button color="primary" i18n>NEW USER</button>
+    <div class="custom-page-size">
+      <mat-form-field>
+        <mat-select [value]="pageSize" (valueChange)="changePage($event,true)">
+          <mat-option *ngFor="let opt of pageSizeOpts " [value]="opt">
+            {{opt}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-label>rows</mat-label>
+    </div>
+  </div>
+  <div class="table-container">
+    <mat-table [dataSource]="dataSource" multiTemplateDataRows>
+
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef i18n> Username</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Username">
+          <span>{{row?.username}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fullname">
+        <mat-header-cell *matHeaderCellDef i18n> Full Name</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Full Name">
+          <span>{{row?.fullname}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef i18n> Email</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Email">
+          <span>{{row?.email}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef i18n> Status</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Status">
+          <span class="active" [class.disabled]="row.status.id === 3">{{row?.status.description}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="created_date">
+        <mat-header-cell *matHeaderCellDef i18n> Created Date</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Created Date">
+          <span>{{row?.created_date | date:'yyyy-MM-dd'}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row;let even = even; columns: displayedColumns;"
+               [ngClass]="{ 'hide':isLoading, 'even': even, 'odd': !even }">
+      </mat-row>
+    </mat-table>
+    <div class="paginator-container">
+      <div class="custom-range-label" *ngIf="pageLabel"><span
+        i18n>{{pageLabel}}</span></div>
+      <mat-paginator [pageIndex]="page" [pageSize]="pageSize" [hidePageSize]="true"
+                     [length]="totalUsers" showFirstLastButtons
+                     (page)="changePage($event)">
+      </mat-paginator>
+    </div>
+  </div>
+  <div class="loading" *ngIf="isLoading">
+    <mat-spinner [diameter]="60"></mat-spinner>
+    <p i18n>Loading...</p>
+  </div>
+
+</div>

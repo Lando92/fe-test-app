@@ -1,0 +1,65 @@
+.users-container {
+  padding: 1rem 0;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  .table-container {
+    .mat-header-row {
+      .mat-header-cell {
+        font-size: .8rem;
+      }
+    }
+    .mar-row {
+      min-height: 40px;
+    }
+    .mat-column-created_date {
+      flex: 5;
+    }
+    .mat-column-email {
+      flex: 3;
+    }
+    .mat-column-username, .mat-column-fullname, .mat-column-status {
+      flex: 2;
+    }
+    .even {
+      background: #F2F2F2;
+    }
+    .odd {
+      background: #FAFAFA;
+    }
+  }
+
+  .paginator-container {
+    display: flex;
+    align-items: center;
+    .custom-range-label {
+      margin-right: auto;
+      margin-left: 1rem;
+      color: rgba(0, 0, 0, 0.54);
+      font-size: .8rem;
+    }
+    mat-paginator{
+      margin-left: auto;
+    }
+  }
+  .active {
+    color: #60AF4C
+  }
+
+  .disabled {
+    color: #F24D4D
+  }
+
+}
+
+.custom-page-size {
+  display: flex;
+  align-items: center;
+  .mat-form-field {
+    width: 60px;
+    margin-right: 10px;
+  }
+}
