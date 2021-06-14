@@ -1,3 +1,31 @@
+html, body {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.table-container {
+  mat-header-row {
+    min-height: 36px;
+  }
+  mat-row {
+    min-height: 32px;
+  }
+}
+
+.loading {
+  padding: 40px 0;
+  text-align: center;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mat-paginator-range-label {
+  display: none;
+}
