@@ -1,12 +1,20 @@
-.users-container {
+.users {
   padding: 1rem 0;
-  .header {
+  &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
+    &-page-size {
+      display: flex;
+      align-items: center;
+      .mat-form-field {
+        width: 60px;
+        margin-right: 10px;
+      }
+    }
   }
-  .table-container {
+  &__table {
     .mat-table {
       border-top: 1px solid #c3c1c1;
     }
@@ -33,9 +41,15 @@
     .odd {
       background: #FAFAFA;
     }
+    .active {
+      color: #60AF4C
+    }
+    .disabled {
+      color: #F24D4D
+    }
 
     @media screen and (max-width: 900px) {
-      .mat-column-created_date{
+      .mat-column-created_date {
         display: none;
       }
 
@@ -53,36 +67,20 @@
 
     }
 
-  }
-
-  .paginator-container {
-    display: flex;
-    align-items: center;
-    .custom-range-label {
-      margin-right: auto;
-      margin-left: 1rem;
-      color: rgba(0, 0, 0, 0.54);
-      font-size: .8rem;
+    &-paginator {
+      display: flex;
+      align-items: center;
+      .custom-range-label {
+        margin-right: auto;
+        margin-left: 1rem;
+        color: rgba(0, 0, 0, 0.54);
+        font-size: .8rem;
+      }
+      mat-paginator {
+        margin-left: auto;
+      }
     }
-    mat-paginator {
-      margin-left: auto;
-    }
   }
-  .active {
-    color: #60AF4C
-  }
-
-  .disabled {
-    color: #F24D4D
-  }
-
 }
 
-.custom-page-size {
-  display: flex;
-  align-items: center;
-  .mat-form-field {
-    width: 60px;
-    margin-right: 10px;
-  }
-}
+

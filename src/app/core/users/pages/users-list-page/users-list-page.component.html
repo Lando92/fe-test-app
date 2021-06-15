@@ -1,7 +1,7 @@
-<div class="users-container">
-  <div class="header">
+<div class="users">
+  <div class="users__header">
     <button mat-flat-button color="primary" routerLink="/users/create" i18n>NEW USER</button>
-    <div class="custom-page-size">
+    <div class="users__header-page-size">
       <mat-form-field>
         <mat-select [value]="pageSize" (valueChange)="changePage($event,true)">
           <mat-option *ngFor="let opt of pageSizeOpts " [value]="opt">
@@ -12,7 +12,7 @@
       <mat-label>rows</mat-label>
     </div>
   </div>
-  <div class="table-container">
+  <div class="users__table">
     <mat-table [dataSource]="dataSource" multiTemplateDataRows>
 
       <ng-container matColumnDef="username">
@@ -39,7 +39,7 @@
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef i18n> Status</mat-header-cell>
         <mat-cell *matCellDef="let row" data-label="Status">
-          <span class="active" [class.disabled]="row.status.id === 3">{{row?.status.description}}</span>
+          <span [ngClass]="{'active':row.status.id === 1, 'disabled':row.status.id === 3}">{{row?.status.description}}</span>
         </mat-cell>
       </ng-container>
 
@@ -59,7 +59,7 @@
       <mat-spinner [diameter]="60"></mat-spinner>
       <p i18n>Loading...</p>
     </div>
-    <div class="paginator-container">
+    <div class="users__table-paginator">
       <div class="custom-range-label" *ngIf="pageLabel"><span
         i18n>{{pageLabel}}</span></div>
       <mat-paginator [pageIndex]="page" [pageSize]="pageSize" [hidePageSize]="true"
