@@ -55,6 +55,10 @@
                [ngClass]="{ 'hide':isLoading, 'even': even, 'odd': !even }">
       </mat-row>
     </mat-table>
+    <div class="loading" *ngIf="isLoading">
+      <mat-spinner [diameter]="60"></mat-spinner>
+      <p i18n>Loading...</p>
+    </div>
     <div class="paginator-container">
       <div class="custom-range-label" *ngIf="pageLabel"><span
         i18n>{{pageLabel}}</span></div>
@@ -63,10 +67,6 @@
                      (page)="changePage($event)">
       </mat-paginator>
     </div>
-  </div>
-  <div class="loading" *ngIf="isLoading">
-    <mat-spinner [diameter]="60"></mat-spinner>
-    <p i18n>Loading...</p>
   </div>
 
 </div>

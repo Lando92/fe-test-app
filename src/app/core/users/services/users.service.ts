@@ -18,7 +18,6 @@ export class UsersService {
 
   getUsers(query?: UsersQuery | UserNameQuery): Observable<UserModel[]> {
     const params = query as any;
-    console.log(query);
     return this.http.get<any>(`${this.serverUrl}users`, {params}).pipe(
       map(x => x.data)
     );

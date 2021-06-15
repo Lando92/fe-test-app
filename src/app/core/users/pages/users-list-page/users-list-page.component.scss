@@ -33,6 +33,26 @@
     .odd {
       background: #FAFAFA;
     }
+
+    @media screen and (max-width: 900px) {
+      .mat-column-created_date{
+        display: none;
+      }
+
+    }
+    @media screen and (max-width: 600px) {
+      .mat-column-created_date, .mat-column-status {
+        display: none;
+      }
+
+    }
+    @media screen and (max-width: 480px) {
+      .mat-column-created_date, .mat-column-email, .mat-column-status {
+        display: none;
+      }
+
+    }
+
   }
 
   .paginator-container {

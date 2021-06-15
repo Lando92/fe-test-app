@@ -1,36 +1,43 @@
-<div class="create__user-container">
-  <div class="create__user-form">
-    <h3 i18n>Add New User</h3>
-    <form [formGroup]="createUserForm">
-      <mat-form-field appearance="legacy">
-        <mat-label i18n>Username</mat-label>
-        <input matInput formControlName="username">
-        <mat-error *ngIf="createUserForm.get('username').invalid && !duplicatedUserName">The username field must not
-          have between 3 and 20 characters. And must not have the following
-          special characters {{'{}"[].!'}}
-        </mat-error>
-        <mat-error *ngIf="duplicatedUserName">This username already exist.it can't be repeated</mat-error>
-      </mat-form-field>
-      <div class="fn-ln">
+<div class="create__user">
+  <div class="create__user-main">
+    <div class="create__user-main-form">
+      <h3 i18n>Add New User</h3>
+      <form [formGroup]="createUserForm">
         <mat-form-field appearance="legacy">
-          <mat-label i18n>First Name</mat-label>
-          <input matInput formControlName="first_name">
+          <mat-label i18n>Username</mat-label>
+          <input matInput formControlName="username">
+          <mat-error *ngIf="createUserForm.get('username').invalid && !duplicatedUserName">The username field must have
+            between 3 and 20 characters and must not have the following
+            special characters {{'{}"[].!'}}
+          </mat-error>
+          <mat-error *ngIf="duplicatedUserName">This username already exist.it can't be repeated</mat-error>
         </mat-form-field>
+        <div class="fn-ln">
+          <mat-form-field appearance="legacy">
+            <mat-label i18n>First Name</mat-label>
+            <input matInput formControlName="first_name">
+            <mat-error *ngIf="createUserForm.controls.email.hasError('required')">Field is required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="legacy">
+            <mat-label i18n>Last Name (Optional)</mat-label>
+            <input matInput formControlName="last_name">
+          </mat-form-field>
+        </div>
         <mat-form-field appearance="legacy">
-          <mat-label i18n>Last Name (Optional)</mat-label>
-          <input matInput formControlName="last_name">
+          <mat-label i18n>Email</mat-label>
+          <input matInput formControlName="email">
+          <mat-error *ngIf="createUserForm.controls.email.hasError('required')">Field is required</mat-error>
+          <mat-error *ngIf="createUserForm.controls.email.hasError('pattern')">Invalid email address</mat-error>
         </mat-form-field>
-      </div>
-      <mat-form-field appearance="legacy">
-        <mat-label i18n>Email</mat-label>
-        <input matInput formControlName="email">
-        <mat-error *ngIf="createUserForm.controls.email.hasError('pattern')">Invalid email address</mat-error>
-      </mat-form-field>
-    </form>
-  </div>
-  <div class="create__user-actions">
-    <button mat-flat-button class="cancel" routerLink="/users" i18n> CANCEL</button>
-    <button mat-flat-button color="primary" (click)="createNewUser()" [disabled]="createUserForm.invalid" i18n> ADD NEW USER</button>
+      </form>
+    </div>
+    <div class="create__user-main-actions">
+      <button mat-flat-button class="cancel" routerLink="/users" i18n> CANCEL</button>
+      <button mat-flat-button color="primary" (click)="createNewUser()" [disabled]="createUserForm.invalid" i18n> ADD
+        NEW
+        USER
+      </button>
 
+    </div>
   </div>
 </div>

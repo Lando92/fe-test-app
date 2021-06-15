@@ -26,7 +26,8 @@ export class CreateUserPageComponent implements OnInit, OnDestroy {
       username: new FormControl('', [Validators.maxLength(20), Validators.minLength(3), ValidateString]),
       first_name: new FormControl(''),
       last_name: new FormControl(''),
-      email: new FormControl('', [Validators.pattern('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')]),
+      email: new FormControl('',
+        [Validators.pattern('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')]),
     });
 
     this.createUserForm.controls.username.valueChanges.pipe(
