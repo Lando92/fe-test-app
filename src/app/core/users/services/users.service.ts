@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {UsersQuery} from '../models/user-query';
+import {UserNameQuery, UsersQuery} from '../models/user-query';
 import {UserModel} from '../models/user.model';
 import {map} from 'rxjs/internal/operators';
 import {StatusModel} from '../models/status.model';
@@ -16,16 +16,11 @@ export class UsersService {
   constructor(private http: HttpClient) {
   }
 
-  getUsers(query?: UsersQuery): Observable<UserModel[]> {
+  getUsers(query?: UsersQuery | UserNameQuery): Observable<UserModel[]> {
     const params = query as any;
+    console.log(query);
     return this.http.get<any>(`${this.serverUrl}users`, {params}).pipe(
       map(x => x.data)
-    );
-  }
-
-  getStatusesById(id: number): Observable<StatusModel> {
-    return this.http.get<any>(`${this.serverUrl}statuses/${id}`).pipe(
-      map(x => x.data.status)
     );
   }
 
@@ -33,5 +28,9 @@ export class UsersService {
     return this.http.get<any>(`${this.serverUrl}statuses`).pipe(
       map(x => x.data)
     );
+  }
+
+  createUsers(users: any): Observable<any> {
+    return this.http.post<any>(`${this.serverUrl}users`, users)
   }
 }

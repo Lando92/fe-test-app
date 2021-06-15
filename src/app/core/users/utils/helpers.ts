@@ -1,4 +1,5 @@
 import {ParamMap} from '@angular/router';
+import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export function parseQueryParams(queryParams: ParamMap, fields = {
   page: 'page',
@@ -25,4 +26,13 @@ export function getQueryParams(params: ParamMap, omit: string[]): any {
     }
     return curr;
   }, {});
+}
+
+export function ValidateString(control: FormControl) {
+  const pattern = /[\\!"\\.\\{\\}\\[\]]/g; // can change regex with your requirement if validation fails, return error name & value of true
+  if (pattern.test(control.value)) {
+    return { validString: {value: true} };
+  }
+  // otherwise, if the validation passes, we simply return null
+  return null;
 }

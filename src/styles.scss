@@ -29,3 +29,20 @@ body {
 .mat-paginator-range-label {
   display: none;
 }
+
+// SnackBar Colors
+.success-snackbar {
+  background: #28A745 !important;
+  min-height: 80px !important;
+}
+
+.warning-snackbar {
+  background: #ffc107 !important;
+  min-height: 80px !important;
+  color: #343a40 !important;
+}
+
+.error-snackbar {
+  background: #DC3545 !important;
+  min-height: 80px !important;
+}

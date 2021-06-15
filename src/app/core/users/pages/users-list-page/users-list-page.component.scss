@@ -7,6 +7,9 @@
     padding: 1rem;
   }
   .table-container {
+    .mat-table {
+      border-top: 1px solid #c3c1c1;
+    }
     .mat-header-row {
       .mat-header-cell {
         font-size: .8rem;
@@ -41,7 +44,7 @@
       color: rgba(0, 0, 0, 0.54);
       font-size: .8rem;
     }
-    mat-paginator{
+    mat-paginator {
       margin-left: auto;
     }
   }

@@ -70,28 +70,6 @@ export class UsersListPageComponent implements OnInit, OnDestroy {
       takeUntil(this.$componentDestroyed)
     ).subscribe(() => {
     });
-
-    /*
-    *  Otra forma de  hacerlo
-    */
-    // this.userService.getUsers(query).pipe(
-    //   flatMap((x) => x),
-    //   mergeMap((user) => {
-    //     return this.userService.getStatusesById(user.id_status).pipe(
-    //       map((res) => {
-    //         return {
-    //           ...user,
-    //           fullname: `${user.first_name} ${user.last_name ? user.last_name : ''}`,
-    //           status: res
-    //         }
-    //       }),
-    //     )
-    //   }),
-    //   tap(res => {
-    //     this.usersList.push(res);
-    //     this.dataSource = new MatTableDataSource(this.usersList);
-    //   })
-    // ).subscribe()
   }
 
   getAmountOfUsers() {
@@ -99,19 +77,9 @@ export class UsersListPageComponent implements OnInit, OnDestroy {
       tap((res) => {
         this.totalUsers = res.length;
         this.pageLabel = this.getRangeLabel(this.page, this.pageSize, this.totalUsers);
-        console.log(this.pageLabel);
       }),
       takeUntil(this.$componentDestroyed)
     ).subscribe()
-  }
-
-  ngOnDestroy(): void {
-    this.$componentDestroyed.next();
-    this.$componentDestroyed.unsubscribe();
-  }
-
-  changePageSize(event) {
-    this.pageSize = event;
   }
 
   changePage(event, pageSize?: boolean) {
@@ -139,5 +107,10 @@ export class UsersListPageComponent implements OnInit, OnDestroy {
       Math.min(startIndex + pageSize, length) :
       startIndex + pageSize;
     return `Showing ${startIndex + 1} - ${endIndex} / ${this.totalUsers} entries`
+  }
+
+  ngOnDestroy(): void {
+    this.$componentDestroyed.next();
+    this.$componentDestroyed.unsubscribe();
   }
 }

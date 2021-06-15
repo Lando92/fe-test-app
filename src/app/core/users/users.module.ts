@@ -8,6 +8,8 @@ import {CreateUserPageComponent} from './pages/create-user-page/create-user-page
 import {BrowserModule} from '@angular/platform-browser';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {SharedModule} from '../../shared/shared.module';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {ErrorsInterceptor} from './interceptors/errors.interceptor';
 
 
 @NgModule({
@@ -16,7 +18,7 @@ import {SharedModule} from '../../shared/shared.module';
     CommonModule,
     UsersRoutingModule,
     SharedModule
-  ]
+  ],
 })
 export class UsersModule {
 }

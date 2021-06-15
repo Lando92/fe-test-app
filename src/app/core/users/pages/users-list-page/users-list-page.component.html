@@ -1,6 +1,6 @@
 <div class="users-container">
   <div class="header">
-    <button mat-flat-button color="primary" i18n>NEW USER</button>
+    <button mat-flat-button color="primary" routerLink="/users/create" i18n>NEW USER</button>
     <div class="custom-page-size">
       <mat-form-field>
         <mat-select [value]="pageSize" (valueChange)="changePage($event,true)">
